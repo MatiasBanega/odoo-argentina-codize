@@ -1,3 +1,5 @@
+**English** | [Spanish](https://github.com/codize-app/odoo-argentina/blob/14.0/README_es.md)
+
 # Odoo Argentina
 Argentine Location for Odoo 14 Community. Original based on Location by Moldeo Interactive [and original based on Location by AdHoc]
 
@@ -12,11 +14,17 @@ Clone this repository with branch 14.0
 git clone https://github.com/codize-app/odoo-argentina -b 14.0
 ```
 
+Verify dependencies:
+
+```
+sudo apt-get install libpq-dev python-dev libxml2-dev libxslt1-dev libldap2-dev libsasl2-dev libffi-dev libssl-dev
+```
+
 Inside directory, install dependencies:
 
 ```
 sudo pip3 install -r requirements.txt
-sudo apt-get install python-m2crypto
+sudo apt-get install python3-m2crypto
 ```
 
 ### Prepare Server
@@ -78,6 +86,8 @@ Go to installation directory of PyAFIPWS:
 cd /usr/local/lib/python3/dist-packages/pyafipws
 ```
 
+Note: Replace `python3` by the python version in the system (like `python3.9`)
+
 Create a folder with the name cache:
 
 ```
@@ -95,9 +105,12 @@ Add path odoo-argentina to addons path in `odoo.conf`. Restart Odoo Server, Upda
 ## l10n_ar extras
 
 * `l10n_ar_ledger`: VAT Ledger for Sales and Purchases
+* `l10n_ar_withholding`: Withholding on Invoices and Payments. Premium package (`odoo-argentina-withholding`) support on exports for ARBA, AGIP, SIRCAR Neuquén and SIRCAR Río Negro
+* `l10n_ar_report_picking`: Support for PrePrint Picking
 * `l10n_ar_exchange_rate`: Get Exchange Rate from AFIP
 * `l10n_ar_bank`: Install Argentina Bank's List
-* `l10n_ar_partner`: Add features to contacts (like fantasy name)
+* `l10n_ar_partner`: Add features to contacts (like fantasy name, update from Padrón)
+* `l10n_ar_sale`: Add features to sales (like sale order in USD but invoice in ARS)
 * `l10n_ar_taxes`: Add other taxes (like Internal Taxes)
 
 ## Extras
@@ -115,6 +128,6 @@ For questions, or report bugs please use the following resources:
 ---
 Develop by Exemax SAS & Codize
 
-Funtional Contact: info@examax.com.ar
+Funtional Contact: contacto@exemax.com.ar
 
 Dev Contact: info@codize.ar

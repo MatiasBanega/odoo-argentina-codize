@@ -51,6 +51,7 @@ class AccountPayment(models.Model):
         # inverse='_inverse_exchange_rate',
         digits=(16, 4),
     )
+    payment_type = fields.Selection(selection_add=[('transfer', 'Transferencia')], ondelete={'transfer':'set default'})
 
     @api.depends('amount', 'other_currency', 'amount_company_currency')
     def _compute_exchange_rate(self):
@@ -261,6 +262,15 @@ class AccountPayment(models.Model):
         diferencias de cambio
         """
         if self.journal_id:
+
+            #La numeración se recrea en la validación ya que puede ser erronea si hay mas de una fila por journla
+            if not self.reconciled_bill_ids:
+                self.move_id.journal_id = self.journal_id.id
+                self.name.replace('False', self.journal_id.code)
+                self.move_id._set_next_sequence()
+                self.name =self.move_id.name
+
+
             self.currency_id = (
                 self.journal_id.currency_id or self.company_id.currency_id)
             # Set default payment method
@@ -311,3 +321,29 @@ class AccountPayment(models.Model):
                 self.destination_account_id = (
                     partner.property_account_payable_id.id)
         return res
+
+    def action_post(self):
+        #rehago la numeración acá porque get_last_secuence trae el último grabado y siempre trae el mismo si hay mas de un
+        #movimiento para un journal
+        for rec in self:
+            if rec.journal_id:
+                if not rec.reconciled_bill_ids:
+                    rec.move_id.journal_id = rec.journal_id.id
+                    last_sequence = rec.move_id._get_last_sequence()
+                    new = not last_sequence
+                    if new:
+                        last_sequence = rec.move_id._get_last_sequence(
+                            relaxed=True) or rec.move_id._get_starting_sequence()
+                    # Modificación de BIRTUM ya que cuando en los pagos
+                    # vienen retenciones el name es '/' por lo que al tratar
+                    # de hacer el typecast a int salta un error.
+                    last_num = rec.move_id.name[-4:]
+                    try:
+                        nro_move = int(last_num)
+                    except:
+                        nro_move = False
+                    last_secuence_number = int(last_sequence[-4:])
+                    if isinstance(nro_move, int) and last_secuence_number >= nro_move:
+                        rec.move_id._set_next_sequence()
+                    rec.name = rec.move_id.name
+            super(AccountPayment, rec).action_post()
