@@ -357,6 +357,8 @@ class AccountTax(models.Model):
 
                     amount += (escala.porcentaje / 100.0) * (
                         base_amount - importe_excedente)
+                    
+                    vals['period_withholding_amount'] = amount
 
                     vals['comment'] = "%s + (%s x %s)" % (
                         escala.importe_fijo,
