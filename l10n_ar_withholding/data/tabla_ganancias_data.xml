@@ -273,66 +273,66 @@
 
     <record model="afip.tabla_ganancias.escala" id="escala_1">
         <field name="importe_desde">0</field>
-        <field name="importe_hasta">5000</field>
+        <field name="importe_hasta">8000</field>
         <field name="importe_fijo">0</field>
         <field name="porcentaje">5</field>
         <field name="importe_excedente">0</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_2">
-        <field name="importe_desde">5000</field>
-        <field name="importe_hasta">10000</field>
-        <field name="importe_fijo">250</field>
+        <field name="importe_desde">8000</field>
+        <field name="importe_hasta">16000</field>
+        <field name="importe_fijo">400</field>
         <field name="porcentaje">9</field>
-        <field name="importe_excedente">5000</field>
+        <field name="importe_excedente">8000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_3">
-        <field name="importe_desde">10000</field>
-        <field name="importe_hasta">15000</field>
-        <field name="importe_fijo">700</field>
+        <field name="importe_desde">16000</field>
+        <field name="importe_hasta">24000</field>
+        <field name="importe_fijo">1120</field>
         <field name="porcentaje">12</field>
-        <field name="importe_excedente">10000</field>
+        <field name="importe_excedente">16000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_4">
-        <field name="importe_desde">15000</field>
-        <field name="importe_hasta">20000</field>
-        <field name="importe_fijo">1300</field>
+        <field name="importe_desde">24000</field>
+        <field name="importe_hasta">32000</field>
+        <field name="importe_fijo">2080</field>
         <field name="porcentaje">15</field>
-        <field name="importe_excedente">15000</field>
+        <field name="importe_excedente">24000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_5">
-        <field name="importe_desde">20000</field>
-        <field name="importe_hasta">30000</field>
-        <field name="importe_fijo">2050</field>
+        <field name="importe_desde">32000</field>
+        <field name="importe_hasta">48000</field>
+        <field name="importe_fijo">3280</field>
         <field name="porcentaje">19</field>
-        <field name="importe_excedente">20000</field>
+        <field name="importe_excedente">32000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_6">
-        <field name="importe_desde">30000</field>
-        <field name="importe_hasta">40000</field>
-        <field name="importe_fijo">3950</field>
+        <field name="importe_desde">48000</field>
+        <field name="importe_hasta">64000</field>
+        <field name="importe_fijo">6320</field>
         <field name="porcentaje">23</field>
-        <field name="importe_excedente">30000</field>
+        <field name="importe_excedente">48000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_7">
-        <field name="importe_desde">40000</field>
-        <field name="importe_hasta">60000</field>
-        <field name="importe_fijo">6250</field>
+        <field name="importe_desde">64000</field>
+        <field name="importe_hasta">96000</field>
+        <field name="importe_fijo">10000</field>
         <field name="porcentaje">27</field>
-        <field name="importe_excedente">40000</field>
+        <field name="importe_excedente">64000</field>
     </record>
 
     <record model="afip.tabla_ganancias.escala" id="escala_8">
-        <field name="importe_desde">60000</field>
+        <field name="importe_desde">96000</field>
         <field name="importe_hasta">999999999</field>
-        <field name="importe_fijo">11650</field>
+        <field name="importe_fijo">18640</field>
         <field name="porcentaje">31</field>
-        <field name="importe_excedente">60000</field>
+        <field name="importe_excedente">96000</field>
     </record>
 
 </odoo>
